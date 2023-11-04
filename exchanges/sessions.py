@@ -301,9 +301,7 @@ def GetSessions(date_: datetime, filepath: str):
     # otherwise return a normal trading session
     logging.info(f"date {date_} falls on a regular trading day")
     for regular_trading_hours in [
-        "standard_early_trading_hours",
-        "standard_regular_trading_hours",
-        "standard_late_trading_hours",
+        x for x in data.keys() if re.search("^standard_(?!partial).*_hours$", x)
     ]:
         for session in data[regular_trading_hours]:
             sessions.append(
@@ -364,7 +362,6 @@ def main():
 
     # run for full date range on xnas.yml
     date_list = pd.date_range(start="1996-01-01", end="2022-12-01").tolist()
-
     for date_ in date_list:
         logging.info(f"getting sessions for date {date_}")
         pp.pprint(GetSessions(tz.localize(date_), "exchanges/xnas.yml"))
