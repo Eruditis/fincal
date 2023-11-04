@@ -5,9 +5,9 @@
 
 timezone: "America/New_York"
 regular_trading_days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-early_trading_hours: [{"session": "NYSE Arca Early Trading", "gte": "4:00 am", "lt": "9:30 am"}]
-regular_trading_hours: [{"session": "NYSE American Core Trading", "gte": "9:30 am", "lt": "4:00 pm"}]
-late_trading_hours: [{"session": "NYSE American Late Trading", "gte": "4:00 pm", "lt": "8:00 pm"}]
+standard_early_trading_hours: [{"session": "NYSE Arca Early Trading", "gte": "4:00 am", "lt": "9:30 am"}]
+standard_regular_trading_hours: [{"session": "NYSE American Core Trading", "gte": "9:30 am", "lt": "4:00 pm"}]
+standard_late_trading_hours: [{"session": "NYSE American Late Trading", "gte": "4:00 pm", "lt": "8:00 pm"}]
 standard_partial_early_trading_hours: [{"session": "NYSE Arca Early Trading", "gte": "4:00 am", "lt": "9:30 am"}]
 standard_partial_regular_trading_hours: [{"session": "NYSE American Core Trading", "gte": "9:30 am", "lt": "1:00 pm"}]
 standard_partial_late_trading_hours: [{"session": "NYSE American Late Trading", "gte": "1:00 pm", "lt": "5:00 pm"}]
@@ -193,5 +193,5 @@ irregular_partial_trading_days:
 
 # Treat these as a "Pause" event during the day
 intra_day_interruptions:
-  1999-04-26: {reason: "Columbine", hours: [{gte: "12:00 pm", lt: "12:02 pm"}]}
-  2000-02-16: {reason: "Walter N Frank", hours: [{gte: "12:00 pm", lt: "12:01 pm"}]}
+  1999-04-26: {reason: "Columbine", hours: [{gte: "12:00 pm", lt: "12:02 pm"}], session: "NYSE American Core Trading"}
+  2000-02-16: {reason: "Walter N Frank", hours: [{gte: "12:00 pm", lt: "12:01 pm"}], session: "NYSE American Core Trading"}
