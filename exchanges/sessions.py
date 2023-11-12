@@ -25,6 +25,7 @@ import sys
 import pandas as pd
 import pprint
 import re
+import pickle
 
 
 def read_yaml_file(file_path: str):
@@ -361,10 +362,14 @@ def main():
     pp.pprint(GetActiveSession(950720410000000000, "exchanges/nyse.yml"))
 
     # run for full date range on xnas.yml
-    date_list = pd.date_range(start="1996-01-01", end="2022-12-01").tolist()
+    date_list = pd.date_range(start="2022-01-01", end="2023-09-30").tolist()
+    sessions = []
     for date_ in date_list:
         logging.info(f"getting sessions for date {date_}")
-        pp.pprint(GetSessions(tz.localize(date_), "exchanges/xnas.yml"))
+        sessions = sessions + GetSessions(tz.localize(date_), "exchanges/xnas.yml")
+    print(sessions)
+    with open('data/sessions.pkl', 'wb') as f:
+        pickle.dump(sessions, f)
 
 
 if __name__ == "__main__":
