@@ -276,7 +276,7 @@ def GetSessions(date_: datetime, filepath: str):
                         "date": date_.strftime("%Y-%m-%d"),
                         "session": session["session"],
                         "gte": {"time": session["gte"], "status": "OPEN"},
-                        "lt": {"time": session["lt"], "status": "CLOSE"},
+                        "lt": {"time": session["lt"], "status": "CLOSED"},
                     }
                 )
         return sessions
@@ -290,7 +290,7 @@ def GetSessions(date_: datetime, filepath: str):
                     "date": date_.strftime("%Y-%m-%d"),
                     "session": session["session"],
                     "gte": {"time": session["hours"][0]["gte"], "status": "OPEN"},
-                    "lt": {"time": session["hours"][0]["lt"], "status": "CLOSE"},
+                    "lt": {"time": session["hours"][0]["lt"], "status": "CLOSED"},
                 }
             )
 
@@ -311,7 +311,7 @@ def GetSessions(date_: datetime, filepath: str):
                     "date": date_.strftime("%Y-%m-%d"),
                     "session": session["session"],
                     "gte": {"time": session["gte"], "status": "OPEN"},
-                    "lt": {"time": session["lt"], "status": "CLOSE"},
+                    "lt": {"time": session["lt"], "status": "CLOSED"},
                 }
             )
     return sessions
